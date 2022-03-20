@@ -4,7 +4,16 @@ module.exports = {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        gray: {
+          DEFAULT: "#C5CED6"
+        },
+        cyan: {
+          DEFAULT: '#8DD7CF'
+        }
+      }
+    },
   },
   plugins: [],
 }

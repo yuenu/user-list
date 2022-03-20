@@ -1,10 +1,21 @@
 <script setup lang="ts">
-import HeaderVue from './components/Header.vue';
+import { provide, onMounted } from 'vue'
+import Header from './components/Header.vue';
 import UserList from './components/UserList.vue'
+import Pagination from './components/Pagination.vue'
+import store from './store'
+
+
+onMounted (async () => {
+  provide('store', store)
+  await store.GET_USERS(30)
+})
+
 </script>
 
 <template lang="pug">
-div(class="max-w-7xl mx-auto text-blue-500")
-  <HeaderVue />
+div(class="min-h-screen mx-auto max-w-7xl")
+  <Header />
   <UserList />
+  <Pagination />
 </template>
