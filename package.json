@@ -4,16 +4,36 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
+    "lint": "eslint --ext .ts \"src/**/*.ts?(x)\"",
+    "format": "prettier --write --parser typescript \"src/**/*.ts?(x)\"",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky install"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": "prettier --write",
+    "*.ts": "eslint --cache --fix"
   },
   "dependencies": {
+    "@rushstack/eslint-patch": "^1.1.1",
+    "@vue/eslint-config-typescript": "^10.0.0",
     "vue": "^3.2.25"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.2.0",
     "autoprefixer": "^10.4.4",
+    "eslint": "^8.11.0",
+    "eslint-plugin-vue": "^8.5.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^12.3.7",
     "postcss": "^8.4.12",
+    "prettier": "^2.6.0",
     "tailwindcss": "^3.0.23",
     "typescript": "^4.5.4",
     "vite": "^2.8.0",

@@ -8,15 +8,14 @@ const store = inject('store', UserStore)
 const selected = ref<10 | 30 | 50>(30)
 
 watch(selected, async (newSelected, _oldSelected) => {
-	store.CHANGE_PER_PAGE(newSelected)
-	await store.GET_USERS(newSelected)
+  store.CHANGE_PER_PAGE(newSelected)
+  await store.GET_USERS(newSelected)
 })
 </script>
 
 <template lang="pug">
 header(class="flex justify-end w-full p-10")
 	div(class="flex items-center w-ful gap-x-3")
-	 
 		select(class="p-2 border rounded-sm border-gray" v-model="selected")
 			option(value="10") 10
 			option(value="30") 30

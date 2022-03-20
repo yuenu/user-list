@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { inject, computed, watch } from 'vue';
+import { inject, computed } from 'vue';
 import UserStore from '../store'
 
 const store = inject('store', UserStore)
