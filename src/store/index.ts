@@ -1,13 +1,13 @@
 import { reactive, computed } from 'vue'
-import type { Response } from '../types'
+import type { Response, ListDisplay, PerPage } from '../types'
 import * as API from '../api'
 
 interface IState {
   responseData: Response['results']
   isLoading: boolean
   errorMessage: string
-  displayType: 'column' | 'row'
-  perPage: 10 | 30 | 50
+  displayType: ListDisplay
+  perPage: PerPage
   currentPage: number
 }
 
@@ -30,11 +30,11 @@ const getters = reactive({
 })
 
 const actions = {
-  SWITCH_DISPLAY_TYPE(type: 'column' | 'row') {
+  SWITCH_DISPLAY_TYPE(type: ListDisplay) {
     state.displayType = type
   },
 
-  CHANGE_PER_PAGE(displayNum: 10 | 30 | 50) {
+  CHANGE_PER_PAGE(displayNum: PerPage) {
     state.perPage = displayNum
   },
 
@@ -42,7 +42,7 @@ const actions = {
     state.currentPage = page
   },
 
-  async GET_USERS(count: 10 | 30 | 50 = 30, page: number = 1) {
+  async GET_USERS(count: PerPage = 30, page: number = 1) {
     try {
       state.isLoading = true
       this.CHANGE_PER_PAGE(count)

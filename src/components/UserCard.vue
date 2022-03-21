@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { Result } from '../types'
+import type { Result, ListDisplay } from '../types'
 
 defineProps<{ 
   user: Result
-  displayType: 'column' | 'row'
+  displayType: ListDisplay
   isLoading: boolean
 }>()
 </script>

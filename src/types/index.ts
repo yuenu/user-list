@@ -86,3 +86,6 @@ export interface Response {
   results: Result[]
   info: Info
 }
+
+export type ListDisplay = 'column' | 'row'
+export type PerPage = 10 | 30 | 50

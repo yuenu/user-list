@@ -3,10 +3,11 @@ import { inject, ref, watch, computed  } from 'vue';
 import UserStore from '../store'
 import ColumnIcon from '../assets/icon/Column.vue';
 import RowIcon from '../assets/icon/Row.vue';
+import type { PerPage } from '../types'
 
 const store = inject('store', UserStore)
 const displayType = computed(() => store.getters.getDisplayType)
-const selected = ref<10 | 30 | 50>(30)
+const selected = ref<PerPage>(30)
 
 watch(selected, async (newSelected, _oldSelected) => {
   await store.GET_USERS(newSelected)

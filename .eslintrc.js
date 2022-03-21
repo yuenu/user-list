@@ -21,7 +21,7 @@ module.exports = {
       { varsIgnorePattern: '.*', args: 'none' }
     ],
     'vue/multi-word-component-names': 0,
-    indent: ['error', 2],
+    'indent': ['error', 2],
     'object-curly-spacing': ['error', 'always'],
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
