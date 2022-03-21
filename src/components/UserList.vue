@@ -10,6 +10,8 @@ const store = inject('store', UserStore)
 const response = computed(() => store.getters.getResponseData)
 const displayType = computed(() => store.getters.getDisplayType)
 const isLoading = computed(() => store.getters.getIsLoading)
+const errorMessage = computed(() => store.getters.getErrorMessage)
+const hasError = computed(() => errorMessage.value.length > 0)
 
 const UserInfo = ref<Result>()
 const isModalOpen = ref(false)
@@ -23,9 +25,10 @@ const closeModal = () => isModalOpen.value = false
 </script>
 
 <template lang="pug">
+p(v-if="hasError") {{ errorMessage }}
 div(:class="['grid gap-4 px-4', displayType === 'column' ? 'grid-cols-2  md:grid-cols-4 lg:grid-cols-5' : ' grid-cols-1']")
-  <Skeletion v-if="isLoading"  v-for="index in 10" :key="index" />
-  <UserCard v-else  v-for="user in response" :user="user" :displayType="displayType" :isLoading="isLoading" :key="user.id.value" @click="onUserClick(user)" />
+  <Skeletion v-if="isLoading || hasError"  v-for="index in 10" :key="index" />
+  <UserCard v-if="!isLoading && hasError"  v-for="user in response" :user="user" :displayType="displayType" :isLoading="isLoading" :key="user.id.value" @click="onUserClick(user)" />
 
 <Teleport to="#modals">
   <Modal v-if="isModalOpen && UserInfo" :user="UserInfo" @closeModal="closeModal" />
