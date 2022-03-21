@@ -20,6 +20,7 @@ module.exports = {
       // catches unused variables but not args.
       { varsIgnorePattern: '.*', args: 'none' }
     ],
+    'vue/multi-word-component-names': 0,
     indent: ['error', 2],
     'object-curly-spacing': ['error', 'always'],
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',

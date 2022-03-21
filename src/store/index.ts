@@ -42,9 +42,10 @@ const actions = {
     state.currentPage = page
   },
 
-  async GET_USERS(count: number = 30, page: number = 1) {
+  async GET_USERS(count: 10 | 30 | 50 = 30, page: number = 1) {
     try {
       state.isLoading = true
+      this.CHANGE_PER_PAGE(count)
       const results = await API.getUsers(count, page)
       state.responseData = results.results
     } catch (e) {
