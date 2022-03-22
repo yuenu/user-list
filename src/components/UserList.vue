@@ -25,10 +25,10 @@ const closeModal = () => isModalOpen.value = false
 </script>
 
 <template lang="pug">
-p(v-if="hasError") {{ errorMessage }}
+p(v-if="hasError" class="text-center text-red-500") {{ errorMessage }}
 div(:class="['grid gap-4 px-4', displayType === 'column' ? 'grid-cols-2  md:grid-cols-4 lg:grid-cols-5' : ' grid-cols-1']")
   <Skeletion v-if="isLoading || hasError"  v-for="index in 10" :key="index" />
-  <UserCard v-if="!isLoading && hasError"  v-for="user in response" :user="user" :displayType="displayType" :isLoading="isLoading" :key="user.id.value" @click="onUserClick(user)" />
+  <UserCard v-if="!isLoading && !hasError"  v-for="user in response" :user="user" :displayType="displayType" :isLoading="isLoading" :key="user.id.value" @click="onUserClick(user)" />
 
 <Teleport to="#modals">
   <Modal v-if="isModalOpen && UserInfo" :user="UserInfo" @closeModal="closeModal" />

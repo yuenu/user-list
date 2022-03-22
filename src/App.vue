@@ -3,12 +3,12 @@ import { provide, onMounted } from 'vue'
 import Header from './components/Header.vue';
 import UserList from './components/UserList.vue'
 import Pagination from './components/Pagination.vue'
-import store from './store'
+import store, { memorizedPerPage, memorizedCurrentPage } from './store'
 
 
 onMounted (async () => {
   provide('store', store)
-  await store.GET_USERS(30)
+  await store.GET_USERS(memorizedPerPage, memorizedCurrentPage)
 })
 
 </script>

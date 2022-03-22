@@ -1,13 +1,19 @@
 import { reactive, computed } from 'vue'
-import type { Response, ListDisplay, PerPage } from '../types'
+import type { Response, ListDisplay } from '../types'
 import * as API from '../api'
+
+export const memorizedPerPage = Number(window.localStorage.getItem('perPage'))
+export const memorizedDisplayType = window.localStorage.getItem('displayType')
+export const memorizedCurrentPage = Number(
+  window.localStorage.getItem('currentPage')
+)
 
 interface IState {
   responseData: Response['results']
   isLoading: boolean
   errorMessage: string
-  displayType: ListDisplay
-  perPage: PerPage
+  displayType: string
+  perPage: number
   currentPage: number
 }
 
@@ -15,9 +21,9 @@ const state = reactive<IState>({
   responseData: [],
   isLoading: false,
   errorMessage: '',
-  displayType: 'column',
-  perPage: 30,
-  currentPage: 1,
+  displayType: memorizedDisplayType || 'column',
+  perPage: memorizedPerPage || 30,
+  currentPage: memorizedCurrentPage || 1,
 })
 
 const getters = reactive({
@@ -32,17 +38,20 @@ const getters = reactive({
 const actions = {
   SWITCH_DISPLAY_TYPE(type: ListDisplay) {
     state.displayType = type
+    window.localStorage.setItem('displayType', type)
   },
 
-  CHANGE_PER_PAGE(displayNum: PerPage) {
+  CHANGE_PER_PAGE(displayNum: number) {
     state.perPage = displayNum
+    window.localStorage.setItem('perPage', String(displayNum))
   },
 
   CHANGE_PAGE(page: number) {
     state.currentPage = page
+    window.localStorage.setItem('currentPage', String(page))
   },
 
-  async GET_USERS(count: PerPage = 30, page: number = 1) {
+  async GET_USERS(count: number = 30, page: number = 1) {
     try {
       state.isLoading = true
       this.CHANGE_PER_PAGE(count)

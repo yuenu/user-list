@@ -3,7 +3,7 @@ import type { Result, ListDisplay } from '../types'
 
 defineProps<{ 
   user: Result
-  displayType: ListDisplay
+  displayType: string
   isLoading: boolean
 }>()
 </script>
