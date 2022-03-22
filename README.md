@@ -1,11 +1,65 @@
-# Vue 3 + Typescript + Vite
+# Random User Display
+This is a prject to using [RandomAPI](https://randomuser.me/) to display user card
 
-This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-## Recommended IDE Setup
+## Table of contents
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+- [How to run](#run)
+## Overview
 
-## Type Support For `.vue` Imports in TS
+### The challenge
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
+- pug
+  - This is my first time using pug, spent some time to figure out syntax, and I thought it was pretty cool, I would consider using it in the next side project.
+
+- vue3 script setup
+  - it's a new feature from vue compile-time syntactic sugar, and also spent some the to read the documentation that new syntax
+
+- tailwindcss
+  - Infrequently used, so the syntax is not very familiar, need to check the documentation from time to time
+
+### Screenshot
+
+***Desktop***
+
+![screenshot](./src/assets/screenshot.png)
+
+***Mobile***
+
+![screenshot-mobile](./src/assets/screenshot-mobile.png)
+
+### Links
+
+- Repo URL: [Repo](https://github.com/yuenu/user-list)
+- Live Site URL: [Live demo](https://user-display-f9607.web.app/)
+
+
+## My process
+### Built with
+
+- HTML(Pug)
+- CSS(SCSS)
+- Vue.js(vue3 script setup)
+- Tailindcss
+- Typescript
+- vite
+
+
+### Code quality
+
+- ESlint
+- Prettier
+- Husky pre-commit hook w/ lint-staged
+
+## Run
+
+```bash
+npm ci
+npm run dev
+```
