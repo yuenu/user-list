@@ -7,4 +7,14 @@
 
 body {
   font-family: 'Lato', sans-serif;
+  background: #f6f6fe;
+  background-image: url(./assets/images/bg-bottom.svg), url(./assets/images/bg-top.svg);
+  background-repeat: no-repeat no-repeat;
+  background-position: left 0 bottom 0, right 0 top 0;
+}
+
+@media (max-width: 764px) {
+  body {
+    background-position: left 0 bottom 0, right -50vw top -5%;
+  }
 }
